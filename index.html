@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://unpkg.com/@webpixels/css@1.2.6/dist/index.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <div class="container my-5">
+        <h1 class="text-center">ID Card Generator</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <form id="info-form">
+                    <div class="mb-3 d-flex align-items-center">
+                        <input type="checkbox" id="show-name" checked disabled>
+                        <label for="name" class="form-label ms-2">Name</label>
+                        <input type="text" id="name" class="form-control ms-2" placeholder="Enter your name"
+                            minlength="1" maxlength="25" required>
+                    </div>
+
+                    <div class="mb-3 d-flex align-items-center">
+                        <input type="checkbox" id="show-location">
+                        <label for="location" class="form-label ms-2">Location</label>
+                        <input type="text" id="location" class="form-control ms-2" placeholder="Enter your location"
+                            minlength="2" maxlength="16" disabled>
+                    </div>
+
+                    <div class="mb-3 d-flex align-items-center">
+                        <input type="checkbox" id="show-age">
+                        <label for="age" class="form-label ms-2">Age</label>
+                        <input type="number" id="age" class="form-control ms-2" placeholder="Enter your age" min="10"
+                            max="100" disabled>
+                    </div>
+
+                    <div class="mb-3 d-flex align-items-center">
+                        <input type="checkbox" id="show-race">
+                        <label for="race" class="form-label ms-2">Race</label>
+                        <select id="race" class="form-select ms-2" disabled>
+                            <option value="" disabled selected>Select your race</option>
+                            <option value="Asian">Asian</option>
+                            <option value="Black or African American">Black or African American</option>
+                            <option value="Hispanic or Latino">Hispanic or Latino</option>
+                            <option value="Native American or Alaska Native">Native American or Alaska Native</option>
+                            <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific
+                                Islander</option>
+                            <option value="White">White</option>
+                            <option value="Middle Eastern or North African">Middle Eastern or North African</option>
+                            <option value="Mixed or Multi-Racial">Mixed or Multi-Racial</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 d-flex align-items-center">
+                        <input type="checkbox" id="show-sex">
+                        <label for="sex" class="form-label ms-2">Sex</label>
+                        <select id="sex" class="form-select ms-2" disabled>
+                            <option value="" disabled selected>Select your sex</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="theme-color-start" class="form-label">Select Gradient Start Color</label>
+                        <input type="color" id="theme-color-start" class="form-control form-control-color"
+                            value="#FF5F6D">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="theme-color-end" class="form-label">Select Gradient End Color</label>
+                        <input type="color" id="theme-color-end" class="form-control form-control-color"
+                            value="#FFC371">
+                    </div>
+
+                    <div class="mb-3 d-flex align-items-center">
+                        <input type="checkbox" id="show-photo" checked disabled>
+                        <label for="upload-photo" class="form-label ms-2">Upload Photo</label>
+                        <input type="file" id="upload-photo" class="form-control ms-2" accept="image/*" required>
+                    </div>
+
+                    <button type="button" id="download-btn" class="btn btn-primary" onclick="downloadImage()"
+                        disabled>Download ID Card</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <div id="id-card" class="border rounded p-4 shadow-sm position-relative bg-light"
+                    style="width: 400px; height: 250px;">
+                    <div id="banner" class="p-3 rounded-top text-white text-center fw-bold"
+                        style="background: linear-gradient(90deg, #FF5F6D, #FFC371);">
+                        <span id="banner-name">Name</span>
+                    </div>
+
+                    <div class="d-flex align-items-start my-3">
+                        <div id="photo-preview" class="me-3">
+                            <img id="photo" src="" alt="Your Photo" class="img-fluid rounded"
+                                style="width: 80px; height: 80px; object-fit: cover;">
+                        </div>
+                        <div id="info-section">
+                            <p class="mb-1 d-none" id="location-row">
+                                <strong>Location:</strong> <span id="display-location">--</span>
+                            </p>
+                            <p class="mb-1 d-none" id="age-row">
+                                <strong>Age:</strong> <span id="display-age">--</span>
+                            </p>
+                            <p class="mb-1 d-none" id="race-row">
+                                <strong>Race:</strong> <span id="display-race">--</span>
+                            </p>
+                            <p class="mb-1 d-none" id="sex-row">
+                                <strong>Sex:</strong> <span id="display-sex">--</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--
+                        <div id="footer" class="text-muted text-center mt-4">
+                            https://lh0521.github.io/ID/
+                        </div>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
